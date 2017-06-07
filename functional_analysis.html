@@ -1,0 +1,146 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Functional analysis (泛函分析) &#8212; Mathematics Notebook 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Mathematics Notebook’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="functional-analysis">
+<h1>1. Functional analysis (泛函分析)<a class="headerlink" href="#functional-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-lemma admonition" id="young-inequality">
+<p class="first admonition-title">Lemma</p>
+<p>[<span class="target" id="index-0"></span>Young’s inequality] 对于任意的 <span class="math">\(\alpha, \beta \ge 0\)</span> , 且 <span class="math">\(p, q &gt; 1, \dfrac{1}{p}+\dfrac{1}{q}=1\)</span> , 有如下不等式成立，</p>
+<div class="last math" id="equation-eq:young-inequality">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq:young-inequality" title="Permalink to this equation">¶</a></span>\[\alpha \beta \le \frac{\alpha^{p}}{p} + \frac{\beta^{q}}{q}\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="first admonition-title">Proof</p>
+<p>思路基本上是用导数算出极值，用二次导数表明该极值是极小值。可以直接计算 <span class="math">\(f(\alpha) = \dfrac{\alpha^{p}}{p} + \dfrac{\beta^{q}}{q} - \alpha \beta\)</span> 的导数，也可以在做一定变换后求 <span class="math">\(f(x) = x^{1-p} + (p-1)x - p\)</span> 的导数，后者的推导如下，</p>
+<div class="math">
+\[\alpha \beta \le \frac{\alpha^{p}}{p} + \frac{\beta^{q}}{q} \Leftrightarrow 1 \le \frac{\alpha^{p-1}\beta^{-1}}{p} + \frac{\beta^{q-1}\alpha^{-1}}{q} \Leftrightarrow 1 \le \frac{\alpha^{\frac{p}{q}}\beta^{-1}}{p} + \frac{\beta^{\frac{q}{p}}\alpha^{-1}}{q}\]</div>
+<p>最妙的地方在于注意到 <span class="math">\(\alpha^{\frac{p}{q}}\beta^{-1} = (\beta^{\frac{q}{p}}\alpha^{-1})^{-\frac{p}{q}}\)</span> , 令 <span class="math">\(x = \beta^{\frac{q}{p}}\alpha^{-1}\)</span> , 那么就有 <span class="math">\(x &gt; 0\)</span> , 且</p>
+<div class="math">
+\[\alpha \beta \le \frac{\alpha^{p}}{p} + \frac{\beta^{q}}{q} \Leftrightarrow 1 \le \frac{x^{-\frac{p}{q}}}{p} + \frac{x}{q} \Leftrightarrow 1 \le \frac{x^{1-p}}{p} + \frac{(p-1)x}{p} \Leftrightarrow 0 \le x^{1-p} + (p-1)x - p\]</div>
+<p class="last">由 <span class="math">\(f'(x) = 0\)</span> 可推出 <span class="math">\(x = 1\)</span> , 于是有 <span class="math">\(f(1) = 0\)</span> 且 <span class="math">\(f''(1) = p(p-1) &gt; 0\)</span> , 从而得证</p>
+</div>
+<div class="admonition-theorem admonition" id="holder-inequality">
+<p class="first admonition-title">Theorem</p>
+<p>[<span class="target" id="index-1"></span>Hölder’s inequality] 对于任意的 <span class="math">\(p\)</span> 次，<span class="math">\(q\)</span> 次绝对收敛的序列 <span class="math">\((x_{n}) \in \mathscr{l}_{p}, (y_n) \in \mathscr{l}_{q}\)</span> , 且 <span class="math">\(p, q &gt; 1, \dfrac{1}{p}+\dfrac{1}{q}=1\)</span> , 有如下不等式成立，</p>
+<div class="math" id="equation-eq:holder-inequality">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq:holder-inequality" title="Permalink to this equation">¶</a></span>\[\sum_{k=1}^{\infty}|x_{k}y_{k}| \le \left(\sum_{k=1}^{\infty} |x_{k}|^{p}\right)^{\frac{1}{p}} \left(\sum_{k=1}^{\infty} |y_{k}|^{q}\right)^{\frac{1}{q}}\]</div>
+<p class="last">这个不等式可以认为是柯西不等式的推广，方便记忆的方法 – <strong>两个向量的內积不大于它们的模的积</strong> ，注意这两个向量的模是共轭的</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="first admonition-title">Proof</p>
+<p>思路是利用 <a class="reference internal" href="#young-inequality"><span class="std std-ref">Young’s inequality</span></a> 来证明，但其中有个很有意思的变换，如果不做这个变换则正好得不到想要的不等号方向，</p>
+<div class="math">
+\[\frac{|x_{k}|}{\left(\sum_{k=1}^{\infty}|x_{k}|^{p}\right)^{\frac{1}{p}}} \frac{|y_{k}|}{\left(\sum_{k=1}^{\infty}|y_{k}|^{q}\right)^{\frac{1}{q}}} \le \frac{1}{p}\frac{|x_{k}|^{p}}{\sum_{k=1}^{\infty}|x_{k}|^{p}} + \frac{1}{q}\frac{|y_{k}|^{q}}{\sum_{k=1}^{\infty}|y_{k}|^{q}}\]</div>
+<p class="last">接下去的部分就显然了，得证</p>
+</div>
+<div class="admonition-theorem admonition" id="minkowski-inequality">
+<p class="first admonition-title">Theorem</p>
+<p>[<span class="target" id="index-2"></span>Minkowski’s inequality] 对于任意 <span class="math">\(p\)</span> 次绝对收敛的序列 <span class="math">\((x_{n}), (y_{n}) \in \mathscr{l}_{p}\)</span> , 且 <span class="math">\(p &gt; 1\)</span> , 有如下不等式成立，</p>
+<div class="math" id="equation-eq:minkowski-inequality">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq:minkowski-inequality" title="Permalink to this equation">¶</a></span>\[\left(\sum_{k=1}^{\infty}|x_{k} + y_{k}|^{p}\right)^{\frac{1}{p}} \le \left(\sum_{k=1}^{\infty} |x_{k}|^{p}\right)^{\frac{1}{p}}+ \left(\sum_{k=1}^{\infty} |y_{k}|^{p}\right)^{\frac{1}{p}}\]</div>
+<p class="last">这个不等式可以认为就是三角不等式： <span class="math">\(||x+y||_{p} \le ||x||_{p} + ||y||_{p}\)</span></p>
+</div>
+<div class="admonition-proof admonition">
+<p class="first admonition-title">Proof</p>
+<p>思路是利用 <a class="reference internal" href="#holder-inequality"><span class="std std-ref">Hölder’s inequality</span></a> 来证明，但首先要创造出 <span class="math">\(p\)</span> 的共轭数 <span class="math">\(q\)</span>，令 <span class="math">\(\frac{1}{p} = 1 - \frac{1}{q}\)</span> , 代入不等式左侧得到 <span class="math">\(\left(\sum_{k=1}^{\infty}|x_{k} + y_{k}|^{p}\right)^{1 - \frac{1}{q}}\)</span> , 考虑到不等式左侧和的绝对值不适合拆开，于是在不等式两侧同乘以 <span class="math">\(\left(\sum_{k=1}^{\infty}|x_{k} + y_{k}|^{p}\right)^{\frac{1}{q}}\)</span> 就得到</p>
+<div class="math">
+\begin{align*}
+&amp;\left(\sum_{k=1}^{\infty} |x_{k}|^{p}\right)^{\frac{1}{p}}\left(\Big(\sum_{k=1}^{\infty}|x_{k} + y_{k}|^{\frac{p}{q}}\Big)^{q}\right)^{\frac{1}{q}} + \left(\sum_{k=1}^{\infty} |y_{k}|^{p}\right)^{\frac{1}{p}} \left(\Big(\sum_{k=1}^{\infty}|x_{k} + y_{k}|^{\frac{p}{q}}\Big)^{q}\right)^{\frac{1}{q}}\\
+&amp;\ge \sum_{k=1}^{\infty}|x_{k}||x_{k} + y_{k}|^{\frac{p}{q}} + \sum_{k=1}^{\infty}|y_{k}||x_{k} + y_{k}|^{\frac{p}{q}} \ge \sum_{k=1}^{\infty}|x_{k} + y_{k}|^{\frac{p}{q} + 1} = \sum_{k=1}^{\infty}|x_{k} + y_{k}|^{p}
+\end{align*}</div><p class="last">得证</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Mathematics Notebook’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/functional_analysis.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ZHANG-(HANYU)-BAOYUAN.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/functional_analysis.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

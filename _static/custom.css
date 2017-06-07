@@ -1,0 +1,20 @@
+/* This file intentionally left blank. */
+div.admonition-proof {
+    margin: 20px 0px;
+    padding: 10px 30px;
+    background-color: #FFF;
+    border: 1px solid #FFF;
+}
+
+div.admonition-proof p.admonition-title {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1;
+}
+
+div.admonition-proof p.admonition-title:after {
+    content: "";
+}
