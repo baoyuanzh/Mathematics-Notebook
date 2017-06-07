@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = python3 -msphinx
 SPHINXPROJ    = MathematicsNotebook
 SOURCEDIR     = .
-BUILDDIR      = _build
+BUILDDIR      = ../build
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,3 +18,7 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+gh-pages:
+	git checkout gh-pages
+	git checkout master _build
