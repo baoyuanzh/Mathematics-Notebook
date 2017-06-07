@@ -5,8 +5,8 @@
 SPHINXOPTS    =
 SPHINXBUILD   = python3 -msphinx
 SPHINXPROJ    = MathematicsNotebook
-SOURCEDIR     = .
-BUILDDIR      = ../build
+SOURCEDIR     = source
+BUILDDIR      = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -21,18 +21,10 @@ help:
 
 gh-pages:
 	git checkout gh-pages
-	cd ..
-
-#	rm -rf _sources _static
-#	git checkout master source
-#	git reset HEAD
-#	cd source
-#	make html
-#	cd ..
-#	mv -fv build/html/* ./
-	
-#	rm -rf source build
-#	git add -A
-#	git commit -m "Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`"
-
-# git push origin gh-pages; git checkout master
+	rm -rf build _sources _static
+	git checkout master source Makefile
+	git reset HEAD
+	make html
+	mv -fv build/html/* ./
+	rm -rf build source Makefile
+	git add -A
